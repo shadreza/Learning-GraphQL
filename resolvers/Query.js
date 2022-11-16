@@ -21,8 +21,7 @@ exports.Query = {
 
     },
 
-    categories: (parent, args, { categories_array }) => categories_array
-    ,
+    categories: (parent, args, { categories_array }) => categories_array,
 
     category: (parent, {id}, { categories_array}) => {
         for (let i = 0; i < categories_array.length; i++) {
@@ -32,5 +31,7 @@ exports.Query = {
             // }
         }
     },
+
+    allReviews: (parent, args, {reviews}) => reviews,
 
 }
