@@ -10,6 +10,7 @@ exports.typeDefs = gql`
         married: Boolean!
         visitedPlaces: [String!]!
         boughtProducts: [Product!]!
+        products(filter: ProductsFilterInput): [Product!]!
         product(id: ID!): Product
         categories: [Category!]!
         category(id: ID!): Category
@@ -46,4 +47,9 @@ exports.typeDefs = gql`
         rating: Int!
         productId: String!
     }
+
+    input ProductsFilterInput {
+        onSale: Boolean
+    }
+
 `

@@ -32,6 +32,18 @@ exports.Query = {
         }
     },
 
-    allReviews: (parent, args, {reviews}) => reviews,
+    allReviews: (parent, args, { reviews }) => reviews,
+    
+    products: (parent, {filter}, {products}) => {
+        let filteredProducts = products
+
+        if (filter) {
+            if (filter.onSale === true) {
+                filteredProducts = filteredProducts.filter(product => product.onSale)
+            }
+        }
+
+        return filteredProducts
+    }
 
 }
