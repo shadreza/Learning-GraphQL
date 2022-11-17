@@ -1,5 +1,5 @@
 exports.Category = {
-    products: ({ id }, { filter }, { products }) => {
+    products: ({ id }, { filter }, { products, reviews }) => {
         const categoryPrd = products.filter(product => product.categoryId === id)
         
         let filteredCategoryProducts = categoryPrd
@@ -7,6 +7,19 @@ exports.Category = {
         if (filter) {
             if (filter.onSale === true) {
                 filteredCategoryProducts = filteredCategoryProducts.filter(product => product.onSale)
+            }
+            if (filter.avgRating > 0.0) {
+                filteredCategoryProducts = filteredCategoryProducts.filter(product => {
+                    let avgPrdRating = 0.0
+                    let reviewCount = 0
+                    reviews.filter(review => {
+                        if (review.productId === product.id) {
+                            avgPrdRating += review.rating
+                            reviewCount += 1
+                        }
+                    })
+                    if ((reviewCount > 0) && (avgPrdRating / reviewCount >= filter.avgRating)) return product
+                })
             }
         }
 

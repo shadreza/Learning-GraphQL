@@ -34,12 +34,25 @@ exports.Query = {
 
     allReviews: (parent, args, { reviews }) => reviews,
     
-    products: (parent, {filter}, {products}) => {
+    products: (parent, {filter}, {products, reviews}) => {
         let filteredProducts = products
 
         if (filter) {
             if (filter.onSale === true) {
                 filteredProducts = filteredProducts.filter(product => product.onSale)
+            }
+            if (filter.avgRating > 0.0) {
+                filteredProducts = filteredProducts.filter(product => {
+                    let avgPrdRating = 0.0
+                    let reviewCount = 0
+                    reviews.filter(review => {
+                        if (review.productId === product.id) {
+                            avgPrdRating += review.rating
+                            reviewCount += 1
+                        }
+                    })
+                    if((reviewCount > 0) && (avgPrdRating >= filter.avgRating)) return product
+                })
             }
         }
 
