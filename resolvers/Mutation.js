@@ -60,7 +60,7 @@ exports.Mutation = {
             } else {
                 db.products = db.products.filter(product => {
                     if (product.categoryId === id) {
-                        product.categoryId = ""
+                        product.categoryId = null
                     }
                     return product
                 })
@@ -78,8 +78,16 @@ exports.Mutation = {
         db.products = db.products.filter(product => {
             if (product.id !== id) {
                 return product
-            } else responseMsg = "Successfully Deleted the Product" + " " + product.name
-            
+            } else {
+                db.reviews = db.reviews.map(review => {
+                    if (review.productId === id) return {
+                        ...review,
+                        productId : null
+                    }
+                    return review
+                })
+                responseMsg = "Successfully Deleted the Product" + " " + product.name
+            }
         })
 
         return responseMsg

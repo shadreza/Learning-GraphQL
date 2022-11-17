@@ -45,7 +45,7 @@ exports.typeDefs = gql`
         title: String!
         comment: String!
         rating: Int!
-        productId: String!
+        productId: ID
     }
 
     input ProductsFilterInput {
