@@ -1,0 +1,8 @@
+query {
+  products(filter: {
+    onSale: true
+  }) {
+    name
+    onSale
+  }
+}

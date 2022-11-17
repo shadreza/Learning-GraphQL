@@ -1,0 +1,9 @@
+query {
+  product(id: "53a0724c-a416-4cac-ae45-bfaedce1f147") {
+    id
+    name
+    description
+    image
+    price
+  }
+}

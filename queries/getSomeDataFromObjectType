@@ -1,0 +1,6 @@
+query {
+  boughtProducts {
+    name
+    image
+  }
+}

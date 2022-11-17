@@ -1,0 +1,16 @@
+query {
+  age
+  name
+  salary
+  married
+  visitedPlaces
+  boughtProducts {
+    id
+    name
+    description
+    quantity
+    price
+    image
+    onSale
+  }
+}

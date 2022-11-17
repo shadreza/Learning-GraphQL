@@ -1,0 +1,21 @@
+query($filter: ProductsFilterInput){
+  categories {
+    name
+    products(filter: $filter) {
+      name
+      onSale
+      allReviews {
+        rating
+      }
+    }
+  }
+}
+
+
+// variables
+{
+  "filter": {
+    "onSale": true,
+    "avgRating": 4.5
+  }
+}

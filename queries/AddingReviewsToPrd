@@ -1,0 +1,22 @@
+query($productId: ID!, $benchMark: Int!, $maxCount: Int!) {
+  product(id: $productId) {
+    name
+    bestReviews(benchMark: $benchMark, maxCount: $maxCount) {
+      rating
+      title
+      comment
+    }
+    worstReview {
+      rating
+      title
+      comment
+    }
+  }
+}
+
+// variables
+{
+  "productId": "53a0724c-a416-4cac-ae45-bfaedce1f147",
+  "benchMark": 3,
+  "maxCount": 2,
+}
