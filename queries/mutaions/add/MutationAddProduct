@@ -1,0 +1,21 @@
+mutation($input: AddProductInput) {
+  addProduct(input: $input) {
+    id
+    name
+    price
+    quantity
+  }
+}
+
+//variables
+{
+  "input": {
+    "name": "Chair",
+    "description": "A nice grid Chair",
+    "quantity": 200,
+    "price": 25000.0,
+    "image": "http://cdn.shopify.com/s/files/1/0521/4434/1176/collections/inner_banner.png?v=1652690202",
+    "onSale": true,
+    "categoryId": "e07847fc-c6ec-4a7d-b97f-c609b7c08f12"
+  }
+}

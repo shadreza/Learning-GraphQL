@@ -1,0 +1,13 @@
+mutation($input: AddCategoryInput) {
+  addCategory(input: $input) {
+    id
+    name
+  }
+}
+
+// variables
+{
+  "input": {
+    "name": "Office"
+  }
+}

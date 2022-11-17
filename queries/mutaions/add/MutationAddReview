@@ -1,0 +1,17 @@
+mutation($input: AddReviewInput) {
+  addReview(input: $input) {
+    rating
+    title
+  }
+}
+
+//variables
+{
+  "input": {
+    "date": "2021-04-23",
+    "title": "is great",
+    "comment": "awesome product",
+    "rating": 5,
+    "productId": "edc49825-3acc-4b29-999e-e82ccc697e2c",
+  }
+}
