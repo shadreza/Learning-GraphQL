@@ -53,4 +53,13 @@ exports.typeDefs = gql`
         avgRating: Float
     }
 
+    input AddCategoryInput {
+        name: String!
+    }
+
+    type Mutation {
+        addCategory(input: AddCategoryInput): Category!
+    }
+
+
 `

@@ -13,6 +13,8 @@ Very good for bringing out stuff only that we need
     
     npm install apollo-server graphql
 
+    npm install uuid
+
 <br/>
 
 by using the apollo-server we will be working on the graphql part
@@ -54,7 +56,7 @@ Here the **db.js** is the **local database** that is providing with all the data
 
 ### schema.js
 
-Here the **schema.js** is the file that holds all the type-Definitions of all the collections that we can query on. Here in a specific type we are to set what are the things that can be queried upon and what will be the return type and also things like nullable or non-nullable. And the parameters that we pass here can be taken from the **args** param from the **resolvers**
+Here the **schema.js** is the file that holds all the type-Definitions of all the collections that we can query on. Here in a specific type we are to set what are the things that can be queried upon and what will be the return type and also things like nullable or non-nullable. And the parameters that we pass here can be taken from the **args** param from the **resolvers**. Here the **type** keyword is for the typeDefs, **input** is for the **grouping of sets of arguments together and can be used in another field**
 
 <br/>
 
