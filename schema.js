@@ -35,7 +35,7 @@ exports.typeDefs = gql`
     type Category {
         id: ID!
         name: String!
-        products: [Product!]!
+        products(filter: ProductsFilterInput): [Product!]!
     }
 
     type Review {
