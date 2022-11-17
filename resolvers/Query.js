@@ -41,6 +41,11 @@ exports.Query = {
             if (filter.onSale === true) {
                 filteredProducts = filteredProducts.filter(product => product.onSale)
             }
+
+            // if ([1.0, 2.0, 3.0, 4.0, 5.0].includes(filter.avgRating)) {
+                // this part of the code will work if the avgRating is of this array
+            // }
+
             if (filter.avgRating > 0.0) {
                 filteredProducts = filteredProducts.filter(product => {
                     let avgPrdRating = 0.0
