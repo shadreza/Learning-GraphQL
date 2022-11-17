@@ -1,19 +1,19 @@
 const { v4: uuid } = require('uuid')
 
 exports.Mutation = {
-    addCategory: (parent, { input }, {categories_array}) => {
+    addCategory: (parent, { input }, {db}) => {
         const { name } = input
         const newCategory = {
             id: uuid(),
             name,
         }
 
-        categories_array.push(newCategory)
+        db.categories_array.push(newCategory)
 
         return newCategory
     },
 
-    addProduct: (parent, { input }, { products }) => {
+    addProduct: (parent, { input }, { db }) => {
         const { name, description, quantity, price, image, onSale, categoryId } = input
 
         const newProduct = {
@@ -27,13 +27,13 @@ exports.Mutation = {
             categoryId
         }
 
-        products.push(newProduct)
+        db.products.push(newProduct)
 
         return newProduct
 
     },
 
-    addReview: (parent, { input }, { reviews }) => {
+    addReview: (parent, { input }, { db }) => {
         const { date, title, comment, rating, productId } = input
 
         const newReview = {
@@ -45,8 +45,56 @@ exports.Mutation = {
             productId
         }
 
-        reviews.push(newReview)
-        
+        db.reviews.push(newReview)
+
         return newReview
-    }
+    },
+
+    deleteCategory: (parent, { id }, { db }) => {
+
+        let responseMsg ="Failed To Delete the Category"
+
+        db.categories_array = db.categories_array.filter(category => {
+            if (category.id !== id) {
+                return category
+            } else {
+                db.products = db.products.filter(product => {
+                    if (product.categoryId === id) {
+                        product.categoryId = ""
+                    }
+                    return product
+                })
+                responseMsg = "Successfully Deleted the Category" + " " + category.name
+            }
+        })
+
+        return responseMsg
+    },
+
+    deleteProduct: (parent, { id }, { db }) => {
+
+        let responseMsg ="Failed To Delete the Product"
+
+        db.products = db.products.filter(product => {
+            if (product.id !== id) {
+                return product
+            } else responseMsg = "Successfully Deleted the Product" + " " + product.name
+            
+        })
+
+        return responseMsg
+    },
+
+    deleteReview: (parent, { id }, { db }) => {
+
+        let responseMsg ="Failed To Delete the Review"
+
+        db.reviews = db.reviews.filter(review => {
+            if (review.id !== id) {
+                return review
+            } else responseMsg ="Successfully Deleted the Review"  + " " + review.title
+        })
+
+        return responseMsg
+    },
 }

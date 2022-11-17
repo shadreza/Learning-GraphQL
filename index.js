@@ -1,5 +1,5 @@
 const { ApolloServer } = require("apollo-server");
-const { products, categories_array, reviews } = require("./db");
+const { db } = require("./db");
 const { Category } = require("./resolvers/Category");
 const { Mutation } = require("./resolvers/Mutation");
 const { Product } = require("./resolvers/Product");
@@ -15,9 +15,7 @@ const server = new ApolloServer({
         Mutation
     },
     context: {
-        products,
-        categories_array,
-        reviews
+        db
     }
 })
 

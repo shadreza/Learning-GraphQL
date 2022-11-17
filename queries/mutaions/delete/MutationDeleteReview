@@ -1,0 +1,7 @@
+mutation($deleteReviewId: ID!) {
+  deleteReview(id: $deleteReviewId)
+}
+// variables
+{
+  "deleteReviewId": "b22da5d4-6a4b-4db5-8ec3-acc228c36260"
+}

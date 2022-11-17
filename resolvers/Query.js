@@ -5,15 +5,15 @@ exports.Query = {
     salary: (parent, args, context) => 491913.102,
     married: (parent, args, context) => true,
     visitedPlaces: (parent, args, context) => ["Darjeeling", "Agra", "Cox's Bazar", "Bogra"],
-    boughtProducts: (parent, args, { products}) => {
-        return products
+    boughtProducts: (parent, args, { db}) => {
+        return db.products
     },
 
-    product: (parent, {id}, {products}) => {
+    product: (parent, {id}, {db}) => {
 
-        for (let i = 0; i < products.length; i++) {
-            if (products[i].id === id) {
-                return products[i]
+        for (let i = 0; i < db.products.length; i++) {
+            if (db.products[i].id === id) {
+                return db.products[i]
             }
         }
 
@@ -21,7 +21,7 @@ exports.Query = {
 
     },
 
-    categories: (parent, args, { categories_array }) => categories_array,
+    categories: (parent, args, { db }) => db.categories_array,
 
     category: (parent, {id}, { categories_array}) => {
         for (let i = 0; i < categories_array.length; i++) {
@@ -32,10 +32,10 @@ exports.Query = {
         }
     },
 
-    allReviews: (parent, args, { reviews }) => reviews,
+    allReviews: (parent, args, { db }) => db.reviews,
     
-    products: (parent, {filter}, {products, reviews}) => {
-        let filteredProducts = products
+    products: (parent, {filter}, {db}) => {
+        let filteredProducts = db.products
 
         if (filter) {
             if (filter.onSale === true) {
@@ -50,7 +50,7 @@ exports.Query = {
                 filteredProducts = filteredProducts.filter(product => {
                     let avgPrdRating = 0.0
                     let reviewCount = 0
-                    reviews.filter(review => {
+                    db.reviews.filter(review => {
                         if (review.productId === product.id) {
                             avgPrdRating += review.rating
                             reviewCount += 1

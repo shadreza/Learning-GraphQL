@@ -1,6 +1,6 @@
 exports.Category = {
-    products: ({ id }, { filter }, { products, reviews }) => {
-        const categoryPrd = products.filter(product => product.categoryId === id)
+    products: ({ id }, { filter }, { db }) => {
+        const categoryPrd = db.products.filter(product => product.categoryId === id)
         
         let filteredCategoryProducts = categoryPrd
 
@@ -17,7 +17,7 @@ exports.Category = {
                 filteredCategoryProducts = filteredCategoryProducts.filter(product => {
                     let avgPrdRating = 0.0
                     let reviewCount = 0
-                    reviews.filter(review => {
+                    db.reviews.filter(review => {
                         if (review.productId === product.id) {
                             avgPrdRating += review.rating
                             reviewCount += 1

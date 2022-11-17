@@ -25,23 +25,23 @@ const firstNElemntsOfArray = (numberOfElements, array) => {
 }
 
 exports.Product = {
-    category: ({categoryId}, args, { categories_array }) => {
-        for (let i = 0; i < categories_array.length; i++) {
-            if(categories_array[i].id === categoryId) return categories_array[i]
+    category: ({categoryId}, args, { db }) => {
+        for (let i = 0; i < db.categories_array.length; i++) {
+            if(db.categories_array[i].id === categoryId) return db.categories_array[i]
         }
-        // return categories_array.filter(category => category.id === categoryId)[0]
+        // return db.categories_array.filter(category => category.id === categoryId)[0]
     },
 
-    allReviews: ( { id }, args, { reviews }) => { 
-        return reviews.filter(review => review.productId === id)
+    allReviews: ( { id }, args, { db }) => { 
+        return db.reviews.filter(review => review.productId === id)
     },
 
-    bestReviews: ({ id }, { benchMark, maxCount }, { reviews }) => { 
-        return firstNElemntsOfArray(maxCount, sortArray(reviews.filter(review => review.productId === id)).filter(chosenSortedReview => chosenSortedReview.rating >= benchMark))
+    bestReviews: ({ id }, { benchMark, maxCount }, { db }) => { 
+        return firstNElemntsOfArray(maxCount, sortArray(db.reviews.filter(review => review.productId === id)).filter(chosenSortedReview => chosenSortedReview.rating >= benchMark))
     },
     
-    worstReview: ({ id }, args, { reviews }) => { 
-        let sortedReviews = sortArray(reviews.filter(review => review.productId === id))
+    worstReview: ({ id }, args, { db }) => { 
+        let sortedReviews = sortArray(db.reviews.filter(review => review.productId === id))
         return sortedReviews[sortedReviews.length - 1]
     },
 
