@@ -105,4 +105,82 @@ exports.Mutation = {
 
         return responseMsg
     },
+
+    updateCategory: (parent, { id, input }, { db }) => {
+
+        // const { name } = input
+
+        // let responseMsg ="Failed To Update the Category"
+
+        // db.categories_array = db.categories_array.map((category => {
+        //     if (category.id === id) {
+        //         responseMsg = "Successfully Updated the Category" + " " + category.name
+        //         return {
+        //             ...category,
+        //             name
+        //         }
+        //     }
+        //     return category
+        // }))
+
+        // return responseMsg
+
+
+        // 2nd approach
+        const index = db.categories_array.findIndex(category => category.id === id)
+        if(index === -1) return "Failed Updated the Category"
+        db.categories_array[index] = {
+            ...db.categories_array[index],
+            ...input
+        }
+        return "Successfully Updated the Category"
+    },
+
+    updateProduct: (parent, { id, input }, { db }) => {
+
+        let responseMsg ="Failed To Update the Product"
+
+        db.products = db.products.map((product => {
+            if (product.id === id) {
+                responseMsg = "Successfully Updated the Product" + " " + product.name
+                return {
+                    ...product,
+                    ...input
+                }
+            }
+            return product
+        }))
+
+        return responseMsg
+    },
+
+    updateReview: (parent, { id, input }, { db }) => {
+
+        const {
+            date,
+            title,
+            comment,
+            rating,
+            productId,
+        } = input
+
+        let responseMsg ="Failed To Update the Review"
+
+        db.reviews = db.reviews.map((review => {
+            if (review.id === id) {
+                responseMsg = "Successfully Updated the Review" + " " + review.title
+                return {
+                    ...review,
+                    date,
+                    title,
+                    comment,
+                    rating,
+                    productId,
+                }
+            }
+            return review
+        }))
+
+        return responseMsg
+    },
 }

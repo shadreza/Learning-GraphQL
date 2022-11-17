@@ -1,5 +1,7 @@
 # GraphQL
 
+**Apollo-Studio Live Link: https://studio.apollographql.com/graph/shadreza-learns-graphql/**
+
 ## Advantages
 
 Helps to reduce over-fetching and under-fetching
@@ -28,13 +30,28 @@ The entire file structuring needs to be cleaned and organized
 
     /root
         queries
-            getAllData
-            FilteringProducts
-            MergingObjects
+            mutations
+                add
+                    MutationAddCategory
+                    MutationAddProduct
+                    MutationAddReview
+                delete
+                    MutationDeleteCategory
+                    MutationDeleteProduct
+                    MutationDeleteReview
+                updatee
+                    MutationUpdateCategory
+                    MutationUpdateProduct
+                    MutationUpdateReview
+            simple-query
+                getAllData
+                FilteringProducts
+                MergingObjects
         resolvers
             Category.js
             Product.js
             Query.js
+            Mutation.js
         db.js
         index.js
         schema.js
@@ -69,3 +86,13 @@ Here the **queries** folder we have kept the query operations which are giving t
 ### Resolvers
 
 Here the **Resolvers** folder we are having the resolvers javaScript files and within those we are **setting the logic on how we can serve the results that the queries call upon**. And the queries that we have pronounced in the query files need to be exact and the return types need to be matched also
+
+##### Simple-Query
+
+Here we have kept the simple resolvers that only work on the **get** stuff. The **R [Read]** functionality is implemented here
+
+##### Mutations
+
+Here we have kept the mutation logics that is the other pillars of the **CRUD** concept. Here the 3 things are done as **C [Create / Add], U [Update], D[Delete].** This is why this is called mutation cause it changes the stuff...
+
+---

@@ -1,0 +1,14 @@
+mutation {
+  updateProduct(
+    id: "53a0724c-a416-4cac-ae45-bfaedce1f147",
+    input: {
+      name: "Steel Pan",
+        description: "Silver steel pan that is perfect for cooking",
+        quantity: 230,
+        price: 120.22,
+        image: "img-1",
+        onSale: true,
+        categoryId: "c01b1ff4-f894-4ef2-b27a-22aacc2fca70"
+    }
+  )
+}

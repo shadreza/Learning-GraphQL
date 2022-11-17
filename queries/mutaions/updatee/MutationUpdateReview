@@ -1,0 +1,12 @@
+mutation {
+  updateReview(
+    id: "b22da5d4-6a4b-4db5-8ec3-acc228c36260",
+    input: {
+      date: "2021-01-01",
+    title: "This is very bad",
+    comment: "when i bought this it broke the stove",
+    rating: 0,
+    productId: "53a0724c-a416-4cac-ae45-bfaedce1f147",
+    }
+  )
+}
