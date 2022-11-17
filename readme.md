@@ -15,8 +15,55 @@ Very good for bringing out stuff only that we need
 
 <br/>
 
-by using the apollo-server we will be working  on the graphql part
+by using the apollo-server we will be working on the graphql part
 here we had to bring in the **typeDefs** & **resolvers** for the configuration of the apollo-server
 
 then in the localhost we can see the apollo server running live and we will be making the simple **Scalar Typed [String, Int, Boolean, Float, ID!]** data acquisitions
 
+## Code Structuring
+
+The entire file structuring needs to be cleaned and organized
+
+    /root
+        queries
+            getAllData
+            FilteringProducts
+            MergingObjects
+        resolvers
+            Category.js
+            Product.js
+            Query.js
+        db.js
+        index.js
+        schema.js
+        pkg.json + others
+
+<br/>
+
+### Index.js
+
+Here the **Index.js** is the server point or the **gateway** that will be going through all the **connections back-and-forth between the local server and the apollo-server**
+
+<br/>
+
+### db.js
+
+Here the **db.js** is the **local database** that is providing with all the data and the other stuff like the collections and other info
+
+<br/>
+
+### schema.js
+
+Here the **schema.js** is the file that holds all the type-Definitions of all the collections that we can query on. Here in a specific type we are to set what are the things that can be queried upon and what will be the return type and also things like nullable or non-nullable. And the parameters that we pass here can be taken from the **args** param from the **resolvers**
+
+<br/>
+
+### Queries
+
+Here the **queries** folder we have kept the query operations which are giving the results in the apollo-server. Here when we are making an operation call in the apollo-server then we are to use these commands and this is very straightforward because in the **{ }** we are calling the internal params of that type and from that we can get the results. Like objects but don't have **comma (,)**
+
+<br/>
+
+### Resolvers
+
+Here the **Resolvers** folder we are having the resolvers javaScript files and within those we are **setting the logic on how we can serve the results that the queries call upon**. And the queries that we have pronounced in the query files need to be exact and the return types need to be matched also
